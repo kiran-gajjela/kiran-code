@@ -90,6 +90,16 @@ class UI:
         ):
             yield
 
+    @contextmanager
+    def compacting(self):
+        """Show progress while the transcript is summarized."""
+        with self.console.status(
+            Text("compacting conversation", style=MUTED),
+            spinner="dots",
+            spinner_style=ACCENT,
+        ):
+            yield
+
     def usage(self, stats):
         for key, value in stats.items():
             if isinstance(value, (int, float)):
